@@ -23,10 +23,31 @@ Route::get('/', function () {
 Route::get('admin',[AdminController::class,'index']);
 // route to take the datas from login page to verify admin
 Route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
+// middleware to protect the unauthenticated entry to dashboard [create middleware update
+// inside kernal put condition in middleware and put the routes inside middleware]
 Route::group(['middlware'=>'admin_auth'],function(){
+    // route to show dashboard view to the user
     Route::get('admin/dashboard',[AdminController::class,'dashboard']);
+    // route to show categories view to the user
     Route::get('admin/category',[CategoryController::class,'index']);
-    Route::get('admin/manage_category',[CategoryController::class,'managecategory']);
+    // route to show manage category form view 
+    Route::get('admin/category/manage_category',[CategoryController::class,'managecategory']);
+    // route to update the category table here we are using same form for inserting and updating categor
+    Route::get('admin/category/manage_category/{id}',[CategoryController::class,'managecategory']);
+    // post route to take form values from manage category proces
+    Route::post('admin/manage_category_process',[CategoryController::class,'manage_category_process'])->name('category.manage_category_process');
+    // route for deleting category
+    Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
 
+
+
+
+
+
+    Route::get('admin/logout',function(){
+        session()->forget('ADMIN_LOGIN');
+        session()->forget('ADMIN_ID');
+        return redirect('/');
+    });
 
 });

@@ -2,84 +2,36 @@
 @section('content')
 <div class="col">
     <div class="table-responsive table--no-card m-b-30">
+        <div class="alert-success">
+            {{ session('messge') }}
+
+        </div>
         <h1>Categories page</h1><br><br>
-        <a href="{{ url('admin/manage_category') }}" class="btn btn-success text-white">Add Categories</a><br><br>
+        <a href="{{ url('admin/category/manage_category') }}" class="btn btn-success text-white">Add Categories</a><br><br>
         <table class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
-                    <th>date</th>
-                    <th>order ID</th>
-                    <th>name</th>
-                    <th class="text-right">price</th>
-                    <th class="text-right">quantity</th>
-                    <th class="text-right">total</th>
+                    <th>Id</th>
+                    <th>Categoty Name</th>
+                    <th>Category Slug</th>
+                    <th></th>
+                    <th>Actions</th>
+                    
                 </tr>
             </thead>
             <tbody>
+                @foreach ($data as $items )
                 <tr>
-                    <td>2018-09-29 05:57</td>
-                    <td>100398</td>
-                    <td>iPhone X 64Gb Grey</td>
-                    <td class="text-right">$999.00</td>
-                    <td class="text-right">1</td>
-                    <td class="text-right">$999.00</td>
+                    <td>{{ $items->id }}</td>
+                    <td>{{ $items->categoty_name }}</td>
+                    <td>{{ $items->category_slug }}</td>
+                    <td><a href="{{ url('admin/category/delete') }}/{{ $items->id }}" class=" btn btn-danger">DELETE</a></td>
+                    <td><a href="{{ url('admin/category/manage_category') }}/{{ $items->id }}" class="btn btn-success">UPDATE</a></td>
+                    
                 </tr>
-                <tr>
-                    <td>2018-09-28 01:22</td>
-                    <td>100397</td>
-                    <td>Samsung S8 Black</td>
-                    <td class="text-right">$756.00</td>
-                    <td class="text-right">1</td>
-                    <td class="text-right">$756.00</td>
-                </tr>
-                <tr>
-                    <td>2018-09-27 02:12</td>
-                    <td>100396</td>
-                    <td>Game Console Controller</td>
-                    <td class="text-right">$22.00</td>
-                    <td class="text-right">2</td>
-                    <td class="text-right">$44.00</td>
-                </tr>
-                <tr>
-                    <td>2018-09-26 23:06</td>
-                    <td>100395</td>
-                    <td>iPhone X 256Gb Black</td>
-                    <td class="text-right">$1199.00</td>
-                    <td class="text-right">1</td>
-                    <td class="text-right">$1199.00</td>
-                </tr>
-                <tr>
-                    <td>2018-09-25 19:03</td>
-                    <td>100393</td>
-                    <td>USB 3.0 Cable</td>
-                    <td class="text-right">$10.00</td>
-                    <td class="text-right">3</td>
-                    <td class="text-right">$30.00</td>
-                </tr>
-                <tr>
-                    <td>2018-09-29 05:57</td>
-                    <td>100392</td>
-                    <td>Smartwatch 4.0 LTE Wifi</td>
-                    <td class="text-right">$199.00</td>
-                    <td class="text-right">6</td>
-                    <td class="text-right">$1494.00</td>
-                </tr>
-                <tr>
-                    <td>2018-09-24 19:10</td>
-                    <td>100391</td>
-                    <td>Camera C430W 4k</td>
-                    <td class="text-right">$699.00</td>
-                    <td class="text-right">1</td>
-                    <td class="text-right">$699.00</td>
-                </tr>
-                <tr>
-                    <td>2018-09-22 00:43</td>
-                    <td>100393</td>
-                    <td>USB 3.0 Cable</td>
-                    <td class="text-right">$10.00</td>
-                    <td class="text-right">3</td>
-                    <td class="text-right">$30.00</td>
-                </tr>
+                @endforeach
+               
+                
             </tbody>
         </table>
     </div>
