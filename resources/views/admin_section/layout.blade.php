@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>@yield('pagetitle')</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('Admin_assets/css/font-face.css') }}" rel="stylesheet" media="all">
@@ -181,6 +181,10 @@
                             <a href="{{ url('admin/category') }}">
                                 <i class="fas fa-chart-bar"></i>Category</a>
                         </li>
+                            <li>
+                            <a href="{{ url('admin/Coupon') }}">
+                                <i class="fas fa-chart-bar"></i>Coupons</a>
+                        </li>
                        
                        
                       
@@ -229,7 +233,7 @@
                                                
                                                
                                             <div class="account-dropdown__footer">
-                                                <a href="{{ url('admin/logout') }}">
+                                                <a href="{{ url('admin/log') }}">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

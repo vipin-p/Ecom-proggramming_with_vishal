@@ -1,5 +1,5 @@
 @extends('admin_section.layout')
-@section('pagetitle','Categories')
+@section('pagetitle','Coupons')
 
 @section('content')
 <div class="col">
@@ -8,15 +8,14 @@
             {{ session('messge') }}
 
         </div>
-        <h1>@section('pagetitle','Categories')</h1><br><br>
-        <a href="{{ url('admin/category/manage_category') }}" class="btn btn-success text-white">Add Categories</a><br><br>
+        <a href="{{ url('admin/Coupon/manage_coupon') }}" class="btn btn-success text-white">Add Coupons</a><br><br>
         <table class="table table-borderless table-striped table-earnin g">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Categoty Name</th>
-                    <th>Category Slug</th>
-                    <th></th>
+                    <th>Title</th>
+                    <th>Code</th>
+                    <th>value</th>
                     <th>Actions</th>
                     
                 </tr>
@@ -25,10 +24,11 @@
                 @foreach ($data as $items )
                 <tr>
                     <td>{{ $items->id }}</td>
-                    <td>{{ $items->categoty_name }}</td>
-                    <td>{{ $items->category_slug }}</td>
-                    <td><a href="{{ url('admin/category/delete') }}/{{ $items->id }}" class=" btn btn-danger">DELETE</a></td>
-                    <td><a href="{{ url('admin/category/manage_category') }}/{{ $items->id }}" class="btn btn-success">UPDATE</a></td>
+                    <td>{{ $items->title }}</td>
+                    <td>{{ $items->code }}</td>
+                    <td>{{ $items->value    }}</td>
+                    <td><a href="{{ url('admin/coupon/delete') }}/{{ $items->id }}" class=" btn btn-danger">DELETE</a></td>
+                    <td><a href="{{ url('admin/Coupon/manage_coupon') }}/{{ $items->id }}" class="btn btn-success">UPDATE</a></td>
                     
                 </tr>
                 @endforeach

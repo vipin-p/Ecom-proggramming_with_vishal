@@ -1,4 +1,6 @@
 @extends('admin_section.layout')
+@section('pagetitle','Dashboard')
+
 @section('content')
 <div class="row m-t-25">
     <div class="col-sm-6 col-lg-3">

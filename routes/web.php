@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,15 @@ Route::group(['middlware'=>'admin_auth'],function(){
     Route::post('admin/manage_category_process',[CategoryController::class,'manage_category_process'])->name('category.manage_category_process');
     // route for deleting category
     Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
+
+
+    // Routes for coupon crud
+    Route::get('admin/Coupon',[CouponController::class,'index']);
+    Route::get('admin/Coupon/manage_coupon',[CouponController::class,'managecoupon']);
+    Route::get('admin/Coupon/manage_coupon/{id}',[CouponController::class,'managecoupon']);
+    Route::post('admin/manage_coupon_process',[CouponController::class,'manage_coupon_process'])->name('coupon.manage_coupon_process');
+    Route::get('admin/coupon/delete/{id}',[CouponController::class,'delete']);
+
 
 
 
