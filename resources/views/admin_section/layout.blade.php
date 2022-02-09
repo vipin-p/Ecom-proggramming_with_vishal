@@ -29,6 +29,7 @@
     <link href="{{ asset('Admin_assets/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('Admin_assets/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('Admin_assets/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- Main CSS-->
     <link href="{{ asset('Admin_assets/css/theme.css') }}" rel="stylesheet" media="all">
@@ -170,18 +171,18 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
+                        <li class="@yield('dashboard_active')">
                             <a class="js-arrow" href="{{ url('admin/dashboard') }}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                
                             </ul>
                         </li>
-                        <li>
+                        <li class="@yield('category_active')">
                             <a href="{{ url('admin/category') }}">
                                 <i class="fas fa-chart-bar"></i>Category</a>
                         </li>
-                            <li>
+                            <li class="@yield('coupon_active')">
                             <a href="{{ url('admin/Coupon') }}">
                                 <i class="fas fa-chart-bar"></i>Coupons</a>
                         </li>

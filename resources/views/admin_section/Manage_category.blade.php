@@ -1,5 +1,7 @@
 @extends('admin_section.layout')
 @section('pagetitle','Manage Category')
+@section('category_active','active')
+
 
 @section('content')
 <a href="{{ url('admin/category') }}" class="btn btn-danger">Back</a> <br><br>

@@ -1,5 +1,7 @@
 @extends('admin_section.layout')
 @section('pagetitle','Manage Coupon')
+@section('coupon_active','active')
+
 
 @section('content')
 <a href="{{ url('admin/Coupon') }}" class="btn btn-danger">Back</a> <br><br>

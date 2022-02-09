@@ -1,5 +1,7 @@
 @extends('admin_section.layout')
 @section('pagetitle','Dashboard')
+@section('category_active','active')
+
 
 @section('content')
 <div class="row m-t-25">

@@ -40,6 +40,8 @@ Route::group(['middlware'=>'admin_auth'],function(){
     // route for deleting category
     Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
 
+    Route::get('admin/category/status/{status}/{id}',[CategoryController::class,'status']);
+
 
     // Routes for coupon crud
     Route::get('admin/Coupon',[CouponController::class,'index']);

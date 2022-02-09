@@ -1,5 +1,7 @@
 @extends('admin_section.layout')
 @section('pagetitle','Categories')
+@section('category_active','active')
+
 
 @section('content')
 <div class="col">
@@ -27,8 +29,16 @@
                     <td>{{ $items->id }}</td>
                     <td>{{ $items->categoty_name }}</td>
                     <td>{{ $items->category_slug }}</td>
-                    <td><a href="{{ url('admin/category/delete') }}/{{ $items->id }}" class=" btn btn-danger">DELETE</a></td>
                     <td><a href="{{ url('admin/category/manage_category') }}/{{ $items->id }}" class="btn btn-success">UPDATE</a></td>
+                    @if ($items->status == 1)
+                    <td><a href="{{ url('admin/category/status/0') }}/{{ $items->id }}" class=" btn btn-primary">Active</a></td>
+                        
+                    @elseif ($items->status == 0)
+                    <td><a href="{{ url('admin/category/status/1') }}/{{ $items->id }}" class=" btn btn-warning">Deactive</a></td>
+                        
+                    @endif
+                    <td><a href="{{ url('admin/category/delete') }}/{{ $items->id }}" class=" btn btn-danger">DELETE</a></td>
+                    
                     
                 </tr>
                 @endforeach

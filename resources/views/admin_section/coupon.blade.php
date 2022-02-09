@@ -1,5 +1,6 @@
 @extends('admin_section.layout')
 @section('pagetitle','Coupons')
+@section('coupon_active','active')
 
 @section('content')
 <div class="col">
