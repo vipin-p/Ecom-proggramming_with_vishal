@@ -185,6 +185,9 @@
                             <li class="@yield('coupon_active')">
                             <a href="{{ url('admin/Coupon') }}">
                                 <i class="fas fa-chart-bar"></i>Coupons</a>
+                        </li> <li class="@yield('size_active')">
+                            <a href="{{ url('admin/size') }}">
+                                <i class="fas fa-chart-bar"></i>Size</a>
                         </li>
                        
                        
