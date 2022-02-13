@@ -188,6 +188,9 @@
                         </li> <li class="@yield('size_active')">
                             <a href="{{ url('admin/size') }}">
                                 <i class="fas fa-chart-bar"></i>Size</a>
+                        </li>  <li class="@yield('color_active')">
+                            <a href="{{ url('admin/color') }}">
+                                <i class="fas fa-chart-bar"></i>color</a>
                         </li>
                        
                        

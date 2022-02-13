@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Size;
+use App\Models\color;
 use Illuminate\Http\Request;
 
-class SizeController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,49 +14,49 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $result['data'] = Size::all();
-        return view('admin_section/size',$result);
+        $result['data'] = color::all();
+        return view('admin_section/color',$result);
     } 
     // there are two datas processing through this function so we have distinguish them with and
     // if condition,then only the function can distinguish the process
-    public function managesize (Request $request,$id='')
+    public function managecolor (Request $request,$id='')
     
     {
         if($id>0){
-           $arr = Size::where(['id'=>$id])->get();
+           $arr = color::where(['id'=>$id])->get();
 
+           $result['color'] = $arr['0']->color;
            $result['size'] = $arr['0']->size;
-           $result['status'] = $arr['0']->status;
            $result['id'] = $arr['0']->id;
         }else{
+            $result['color'] = '';
             $result['size'] = '';
-            $result['status'] = '';
             $result['id'] = 0;
         }
         // echo '<pre>';
         // print_r($result)  ;
         // die();
-        return view('admin_section.Manage_size',$result);
-    } public function manage_size_process(Request $request)
+        return view('admin_section.Manage_color',$result);
+    } public function manage_color_process(Request $request)
     {
         $request->validate([
-            'size'=>'required|unique:sizes,size,'.$request->post('id')
+            'color'=>'required|unique:colors,color,'.$request->post('id')
         ]);
         if($request->post('id')>0){
-            $model =Size::find($request->post('id'));
+            $model =color::find($request->post('id'));
             $msg = "size updated";
 
 
         }else{
-            $model = new size();
-            $msg = "size inserted";
+            $model = new color();
+            $msg = "color inserted";
 
         }
-        $model->size = $request->post('size');
+        $model->color = $request->post('color');
         $model->status = 1;
         $model->save(); 
         $request->session()->flash('messge',$msg);
-        return redirect('admin/size');
+        return redirect('admin/color');
     }
 
     /**
@@ -66,37 +66,19 @@ class SizeController extends Controller
      */
     public function delete(Request $request,$id)
     {
-        $model = Size::find($id);
+        $model = color::find($id);
         $model->delete();
         $request->session()->flash('messge','category deleted');
-        return redirect('admin/size');  
+        return redirect('admin/color');  
     }
     public function status(Request $request,$status,$id)
     {
 
-        $model = Size::find($id);
+        $model = color::find($id);
         $model->status = $status;
         $model->save();
         $request->session()->flash('messge','size');
-        return redirect('admin/size');  
+        return redirect('admin/color');  
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-  
 }
